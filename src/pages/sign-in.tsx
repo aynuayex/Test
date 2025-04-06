@@ -104,110 +104,118 @@ const SignIn = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="bg-background/80 space-y-8 w-4/5 sm:w-1/3 mt-4 sm:mt-0 flex flex-col justify-center items-center p-2 py-4 rounded-lg shadow"
-      >
-        <Heading title="Welcome Back" />
-        <div className="w-full flex flex-col justify-center items-center gap-8">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem className="w-3/4 ">
-                <FormLabel>Enter Your Email<span className="-ml-1 text-red-600">*</span></FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    className="bg-white"
-                    disabled={form.formState.isSubmitting}
-                    placeholder="Email Here"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem className="w-3/4 ">
-                <FormLabel>Enter Your Password<span className="-ml-1 text-red-600">*</span></FormLabel>
-                <FormControl>
-                  <div className="w-full relative">
+    <div className="h-[calc(100vh-80px)] w-4/5 sm:w-1/3 flex justify-center items-center">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="bg-background/80 space-y-8 w-full  mt-4 sm:mt-0 flex flex-col justify-center items-center p-2 py-4 rounded-lg shadow"
+        >
+          <Heading title="Welcome Back" />
+          <div className="w-full flex flex-col justify-center items-center gap-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="w-3/4 ">
+                  <FormLabel>
+                    Enter Your Email
+                    <span className="-ml-1 text-red-600">*</span>
+                  </FormLabel>
+                  <FormControl>
                     <Input
-                      type={passwordType}
+                      type="email"
                       className="bg-white"
                       disabled={form.formState.isSubmitting}
-                      placeholder="Type Password"
+                      placeholder="Email Here"
                       {...field}
                     />
-                    <span
-                      className="absolute left-[calc(100%-28px)] top-1/2 transform -translate-y-1/2 cursor-pointer dark:text-white"
-                      onClick={togglePasswordVisibility}
-                    >
-                      {hidePassword ? <Eye /> : <EyeOff />}
-                    </span>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          <div className="w-full flex justify-around items-center">
-            <div>
-              <FormField
-                control={form.control}
-                name="persist"
-                render={({ field }) => (
-                  <FormItem className="flex">
-                    <FormControl>
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem className="w-3/4 ">
+                  <FormLabel>
+                    Enter Your Password
+                    <span className="-ml-1 text-red-600">*</span>
+                  </FormLabel>
+                  <FormControl>
+                    <div className="w-full relative">
+                      <Input
+                        type={passwordType}
+                        className="bg-white"
+                        disabled={form.formState.isSubmitting}
+                        placeholder="Type Password"
+                        {...field}
                       />
-                    </FormControl>
-                    <FormLabel>Remember me</FormLabel>
-                  </FormItem>
-                )}
-              />
-            </div>
-            <Link className="text-blue-600 underline -mt-5" to="/sign-up">
-              Forgot Password
-            </Link>
-          </div>
-        </div>
+                      <span
+                        className="absolute left-[calc(100%-28px)] top-1/2 transform -translate-y-1/2 cursor-pointer dark:text-white"
+                        onClick={togglePasswordVisibility}
+                      >
+                        {hidePassword ? <Eye /> : <EyeOff />}
+                      </span>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        <Button
-          className="w-3/4 bg-[#1d3752]"
-          type="submit"
-          disabled={form.formState.isSubmitting}
-        >
-          Continue
-        </Button>
-        <p className="text-center">By proceeding you are agreeing to the</p>
-        <p className="text-center -mt-[38px]">
-          <Link className="text-blue-600 underline" to="/sign-up">
-            Terms & Condtions
-          </Link>{" "}
-          and{" "}
-          <Link className="text-blue-600 underline" to="/sign-up">
-            Privacy Policy
-          </Link>
-        </p>
-        <p className="text-center">
-          Have not an account?{" "}
-          <Link className="text-blue-600 underline" to="/sign-up">
-            Sign up
-          </Link>
-        </p>
-      </form>
-    </Form>
+            <div className="w-full flex justify-around items-center">
+              <div>
+                <FormField
+                  control={form.control}
+                  name="persist"
+                  render={({ field }) => (
+                    <FormItem className="flex">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                      </FormControl>
+                      <FormLabel>Remember me</FormLabel>
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <Link className="text-blue-600 underline -mt-5" to="/sign-up">
+                Forgot Password
+              </Link>
+            </div>
+          </div>
+
+          <Button
+            className="w-3/4 bg-[#1d3752]"
+            type="submit"
+            disabled={form.formState.isSubmitting}
+          >
+            Continue
+          </Button>
+          <p className="text-center">By proceeding you are agreeing to the</p>
+          <p className="text-center -mt-[38px]">
+            <Link className="text-blue-600 underline" to="/sign-up">
+              Terms & Condtions
+            </Link>{" "}
+            and{" "}
+            <Link className="text-blue-600 underline" to="/sign-up">
+              Privacy Policy
+            </Link>
+          </p>
+          <p className="text-center">
+            Have not an account?{" "}
+            <Link className="text-blue-600 underline" to="/sign-up">
+              Sign up
+            </Link>
+          </p>
+        </form>
+      </Form>
+    </div>
   );
 };
 

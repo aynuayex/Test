@@ -5,7 +5,7 @@ export default function Home() {
   const navigate = useNavigate();
   return (
     <div className="w-full h-[calc(100vh-80px)] flex flex-col justify-around items-center text-white">
-      <h1 className="text-3xl font-bold">
+      <h1 className="text-6xl font-bold">
         Welcome To Your <span className="text-[#ffa200]">Virtual Office</span>
       </h1>
       <div className=" flex gap-6">

@@ -24,7 +24,7 @@ const signInFormSchema = z.object({
   email: z.string().email({ message: "Not a valid Email Address." }),
   password: z
     .string()
-    .min(4, { message: "Password must be at least 4 characters." }),
+    .min(4, { message: "Password must be at least 8 characters." }),
   persist: z.boolean(),
 });
 
@@ -47,6 +47,7 @@ const SignIn = () => {
 
   const passwordType = hidePassword ? "password" : "text";
 
+  // This will be updated depending on the API
   const onSubmit = async (data: SignInFormSchemaType) => {
     try {
       const { persist, ...dataWithOutPersist } = data;
@@ -104,11 +105,11 @@ const SignIn = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-80px)] w-4/5 sm:w-1/3 flex justify-center items-center">
+    <div className="h-[calc(100vh-80px)] w-full flex justify-center items-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="bg-background/80 space-y-8 w-full  mt-4 sm:mt-0 flex flex-col justify-center items-center p-2 py-4 rounded-lg shadow"
+          className="bg-background/80 space-y-8 w-4/5 sm:w-1/3 mt-4 sm:mt-0 flex flex-col justify-center items-center p-2 py-4 rounded-lg shadow"
         >
           <Heading title="Welcome Back" />
           <div className="w-full flex flex-col justify-center items-center gap-8">

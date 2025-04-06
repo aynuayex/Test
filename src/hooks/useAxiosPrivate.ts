@@ -3,6 +3,7 @@ import useRefreshToken from './useRefreshToken';
 import { axiosPrivate } from '../api/axios';
 import { useEffect } from 'react';
 
+// used for accessToken using Axios interceptors
 const useAxiosPrivate = () => {
     const {auth} = useAuth();
     const refresh = useRefreshToken();

@@ -2,6 +2,7 @@ import { Mail, Phone, Facebook, Twitter, Instagram, MapPin } from "lucide-react"
 
 const Contact = () => {
   return (
+    <div className="flex justify-center">
     <div className="h-[calc(100vh-80px)] py-16 px-6 text-white">
       <div className="bg-white/30 backdrop-blur-md shadow-lg p-8 px-15 rounded-2xl space-y-12">
 
@@ -61,6 +62,7 @@ const Contact = () => {
         </div>
 
       </div>
+    </div>
     </div>
   );
 };

@@ -31,14 +31,14 @@ const signUpFormSchema = z
     email: z.string().email({ message: "Not a valid Email Address." }),
     password: z
       .string()
-      .min(8, { message: "Password must be at least 4 characters." })
+      .min(8, { message: "Password must be at least 8 characters." })
       .regex(passwordRegex, {
         message:
           "Password must be at least 8 characters long, contain one uppercase letter, one lowercase letter, one number, and one special character.",
       }),
     confirmPassword: z
       .string()
-      .min(8, { message: "Password must be at least 4 characters." }),
+      .min(8, { message: "Password must be at least 8 characters." }),
     persist: z.boolean(),
   })
   .superRefine(({ password, confirmPassword }, ctx) => {
@@ -75,7 +75,8 @@ const SignUp = () => {
   const toggleConfirmPasswordVisibility = () =>
     setHideConfirmPassword(!hideConfirmPassword);
   const confirmPasswordType = hideConfirmPassword ? "password" : "text";
-
+  
+// This will be updated depending on the API
   const onSubmit = async (data: SignUpFormSchemaType) => {
     try {
       const { persist, ...dataWithOutPersist } = data;
@@ -105,7 +106,7 @@ const SignUp = () => {
         toast.success(message);
         setAuth({ id, email, fullName, role, accessToken, emailVerified });
 
-        localStorage.setItem("userId", id); // Save userId
+        localStorage.setItem("userId", id);
         navigate("/verify-email");
       }
       console.log(response);
@@ -125,6 +126,8 @@ const SignUp = () => {
   };
 
   return (
+    
+    <div className="h-[calc(100vh-80px)] w-full flex justify-center items-center">
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
@@ -279,6 +282,7 @@ const SignUp = () => {
         </p>
       </form>
     </Form>
+    </div>
   );
 };
 
